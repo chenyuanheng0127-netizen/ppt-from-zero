@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">PPT From Zero mark</title>
+  <desc id="desc">Three offset presentation pages resolve into a single deck.</desc>
+  <rect width="512" height="512" fill="#102A43"/>
+  <path d="M86 86h208l68 68v204H86z" fill="#E76F51"/>
+  <path d="M102 102h208l68 68v204H102z" fill="#E9C46A"/>
+  <path d="M118 118h208l68 68v204H118z" fill="#F4F1DE"/>
+  <path d="M326 118v68h68" fill="#2A9D8F"/>
+  <path d="M160 238h194v18H160zm0 44h138v18H160zm0 44h86v18h-86z" fill="#102A43"/>
+  <path d="M160 184h104v22H160z" fill="#0F766E"/>
+</svg>

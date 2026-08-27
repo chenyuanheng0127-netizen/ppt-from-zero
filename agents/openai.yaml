@@ -1,0 +1,7 @@
+interface:
+  display_name: "PPT从零到成稿"
+  short_description: "从原始材料到高审美、可编辑、可验证PPT的完整制作工作流"
+  icon_small: "./assets/logo_ppt-from-zero_icon-only_20260827.svg"
+  icon_large: "./assets/logo_ppt-from-zero_horizontal_20260827.svg"
+  brand_color: "#0F766E"
+  default_prompt: "使用$ppt-from-zero把这些材料制作成一份经过逐页视觉验收的高质量PPT。"

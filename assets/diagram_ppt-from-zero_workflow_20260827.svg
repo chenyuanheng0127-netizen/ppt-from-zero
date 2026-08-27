@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">PPT From Zero workflow</title>
+  <desc id="desc">Source material becomes a fact ledger, a slide blueprint, a designed deck, and a verified export.</desc>
+  <rect width="1200" height="360" fill="#F4F1DE"/>
+  <path d="M80 180h1040" stroke="#102A43" stroke-width="6"/>
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <g transform="translate(120 80)">
+      <rect width="180" height="200" fill="#102A43"/>
+      <path d="M42 54h96v18H42zm0 40h96v18H42zm0 40h64v18H42z" fill="#F4F1DE"/>
+      <text x="90" y="188" fill="#E9C46A" font-size="22" font-weight="700">SOURCE</text>
+    </g>
+    <g transform="translate(390 80)">
+      <rect width="180" height="200" fill="#0F766E"/>
+      <path d="M42 54h96v18H42zm0 40h96v18H42zm0 40h64v18H42z" fill="#F4F1DE"/>
+      <text x="90" y="188" fill="#E9C46A" font-size="22" font-weight="700">BLUEPRINT</text>
+    </g>
+    <g transform="translate(660 80)">
+      <rect width="180" height="200" fill="#E76F51"/>
+      <path d="M42 54h96v18H42zm0 40h96v18H42zm0 40h64v18H42z" fill="#F4F1DE"/>
+      <text x="90" y="188" fill="#102A43" font-size="22" font-weight="700">DESIGN</text>
+    </g>
+    <g transform="translate(930 80)">
+      <rect width="180" height="200" fill="#E9C46A"/>
+      <path d="M42 54h96v18H42zm0 40h96v18H42zm0 40h64v18H42z" fill="#102A43"/>
+      <text x="90" y="188" fill="#102A43" font-size="22" font-weight="700">VERIFY</text>
+    </g>
+  </g>
+</svg>
