@@ -11,15 +11,15 @@ metadata:
 
 # PPT From Zero
 
-Turn incomplete source material into a coherent, branded, editable presentation whose final Office render has been inspected page by page.
+Produce a coherent, branded, editable PPTX from incomplete source material, with the final Office render inspected page by page.
 
-This skill is an orchestration layer. It does not replace the active presentation builder:
+This is an integrated PPT-producing workflow. It combines source analysis, narrative design, brand and visual direction, asset provenance, PPTX authoring, and final visual QA. The selected presentation builder owns the export implementation, while this Skill owns the complete route from source material to accepted deliverable:
 
 - If `ppt-master` is available, use it as the default builder and obey its routing, gates, SVG source, and export rules.
 - If the user explicitly names `ppt-master`, it is mandatory for the native PPTX branch.
 - Otherwise, use the available `presentations` workflow for the native branch.
 - For an explicit `HTML→PPT` or “产出两份 PPT” request, run the dual-output workflow in [references/html-to-ppt-dual-output.md](references/html-to-ppt-dual-output.md): `beautiful-article` produces the HTML branch, the verified local `dom-to-pptx` installation converts DOM/CSS to PPTX, and `ppt-master` produces the native branch.
-- A normal single-output task still uses one builder. Design-review skills advise; they do not become competing generators.
+- A normal single-output task still uses one builder. Design and writing skills contribute their scoped decisions; they do not become competing generators.
 
 ## Required Outcome
 

@@ -11,9 +11,9 @@
 
 # PPT From Zero
 
-`ppt-from-zero` 是一套 source-first 的演示文稿工作流 Skill，面向具备 Agent 能力的 AI 工具。它可以把 PDF、DOCX、网页、提纲、图片和数据整理成有事实依据的页面蓝图，再交给原生演示文稿构建器完成生成，并逐页检查最终渲染结果。
+`ppt-from-zero` 是一套面向具备 Agent 能力的 AI 工具的集成式 PPT 产出 Skill。它把 PDF、DOCX、网页、提纲、图片和数据整理成有事实依据、有品牌系统、可编辑的 PPTX，并经过页面蓝图和逐页渲染验收。
 
-它不是第二套 PowerPoint 生成器，而是编排层：[`ppt-master`](https://github.com/hugohe3/ppt-master) 负责原生 PPTX 构建，`ppt-from-zero` 负责沟通契约、事实台账、页面蓝图、统一视觉系统、素材来源和发布前验收。
+它是一条从原始材料到验收通过的完整产出路线。集成 Skill 栈分别负责来源、叙事、品牌、设计、图片、HTML、原生 PPTX 和 QA，再统一回到同一份事实台账、页面蓝图和视觉系统。 [`ppt-master`](https://github.com/hugohe3/ppt-master) 负责原生 PPTX 的导出实现，`ppt-from-zero` 负责围绕它完成整条生产流程。
 
 ![工作流](./assets/diagram_ppt-from-zero_workflow_20260827.svg)
 
@@ -27,6 +27,39 @@
 | 统一视觉系统 | 调色板、字体角色、网格、图片、图表和 Logo 规则 | 页面相关但不机械重复 |
 | 构建路由 | 原生 PPT Master，或明确的 HTML 派生 + 原生双分支 | 诚实呈现可编辑性取舍 |
 | 发布验收 | 逐页渲染、溢出检查、备注和 OpenXML 验证 | 被检查的就是最终交付文件 |
+
+## 集成 Skill 栈
+
+以下 Skill 都是 `ppt-from-zero` 产出路线的一部分。它们是同一套工作流中的分工，不是互相竞争的 PPT 生成器；每次请求只加载需要的角色，并把建议统一收敛到同一份事实台账、页面蓝图和视觉权威中。
+
+| 集成 Skill | 在 PPT 路线中的职责 | 触发时机 |
+| --- | --- | --- |
+| `ppt-master` | 原生 PPTX 构建、SVG 源文件、项目规格、导出和原生 postflight | 默认原生分支；用户明确点名时必须使用 |
+| `presentations` | 面向受众的叙事、页面层级、备注、渲染、montage、溢出检查和最终验收 | 每次 PPTX 交付 |
+| `brand` | Logo 变体、留白、光学对齐、品牌身份和素材一致性 | 有 Logo、机构、合作方或品牌时 |
+| `design-system` | 颜色、字体、间距和复用页面语法的 primitive → semantic → component 令牌 | 多页共享视觉系统时 |
+| `ui-ux-pro-max` | 字体搭配、对比度、图表选择、信息密度和可访问性 | 可读性、图表、表格和高密度页面 |
+| `design-taste-frontend` / `taste-skill` | 反模板、构图变化、层级和反 AI 套路的视觉预检 | 新的高审美 deck 和视觉 QA |
+| `design` | 更广义的艺术指导、自定义图标、图片主导构图和演示文稿视觉语言 | 需要定制视觉方向或图标时 |
+| `slides` | 战略叙事、页面策略、设计令牌和图表型参考 | 叙事规划和策略型 deck |
+| `imagegen` | 原创位图主视觉、质感和概念隐喻 | 只用于原创非事实图片，不能生成官方 Logo 或数据图表 |
+| `stop-slop` | 在不改变事实和主张的前提下，清理机械的中文文案 | 可见中文文案需要润色时 |
+| `beautiful-article` | 长材料的来源归一化和编辑规划，并负责 HTML 分支 | 材料很长/异构，或明确要求 HTML 派生输出时 |
+| `dom-to-pptx` | 把固定 `.slide` HTML/CSS 页面转换为 HTML 派生 PPTX | 仅在明确的 HTML 派生分支中使用 |
+
+### 路线图
+
+```text
+原始材料
+    ↓
+ppt-from-zero：沟通契约 → 事实台账 → 页面蓝图 → 统一视觉系统
+    ├── 原生路线：ppt-master → 可编辑 PPTX → presentations QA
+    └── 双分支路线：beautiful-article → 固定 HTML 页面 → dom-to-pptx → PPTX A
+                    ppt-master → 原生 PPTX B
+                    presentations 对比两份最终渲染
+```
+
+上面列出的辅助 Skill 会参与对应的决策，不会被通用模板悄悄替代，也不会互相改写对方负责的源文件。
 
 ## 示例
 

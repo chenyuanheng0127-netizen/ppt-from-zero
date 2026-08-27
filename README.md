@@ -11,9 +11,9 @@
 
 # PPT From Zero
 
-`ppt-from-zero` is a source-first presentation skill for agent-capable AI tools. It turns PDFs, DOCX files, web pages, outlines, images, and data into a deliberate slide blueprint, then routes the build through a native presentation builder and a full rendered-deck QA pass.
+`ppt-from-zero` is an integrated PPT-producing Skill for agent-capable AI tools. It turns PDFs, DOCX files, web pages, outlines, images, and data into a source-grounded, branded, editable PPTX, with a deliberate slide blueprint and a full rendered-deck QA pass.
 
-It is an orchestration layer, not a second PowerPoint generator. [`ppt-master`](https://github.com/hugohe3/ppt-master) owns the native PPTX build; `ppt-from-zero` owns the communication contract, fact ledger, page blueprint, shared design authority, provenance, and release checks around it.
+It is a complete route from source material to accepted PPT output. The integrated Skill stack assigns source, story, brand, design, image, HTML, native PPTX, and QA decisions to the right specialist. [`ppt-master`](https://github.com/hugohe3/ppt-master) owns the native PPTX export implementation; `ppt-from-zero` coordinates the complete production contract around it.
 
 ![Workflow](./assets/diagram_ppt-from-zero_workflow_20260827.svg)
 
@@ -27,6 +27,39 @@ It is an orchestration layer, not a second PowerPoint generator. [`ppt-master`](
 | Shared visual system | Palette, type roles, grid, image rules, chart language, logo treatment | Related pages stay coherent |
 | Builder routing | Native PPT Master or explicit HTML-derived + native dual output | The editability tradeoff is visible |
 | Release QA | Rendered slide inspection, overflow checks, notes, and OpenXML validation | The delivered file is the file that was checked |
+
+## Integrated Skill Stack
+
+These Skills are part of the `ppt-from-zero` production route. They are scoped roles in one workflow, not separate competing PPT generators. The route loads only the roles needed for the request and resolves their advice into one shared fact ledger, page blueprint, and visual authority.
+
+| Integrated Skill | Responsibility in the PPT route | When it is used |
+| --- | --- | --- |
+| `ppt-master` | Native PPTX builder, SVG source of truth, project specs, export, and native postflight | Default native branch when available; mandatory when explicitly named |
+| `presentations` | Audience-facing narrative, slide hierarchy, notes, rendering, montage, overflow, and final acceptance | Every PPTX deliverable |
+| `brand` | Logo variants, clear space, optical co-branding, identity, and asset consistency | Logos, institutions, partners, or named brands |
+| `design-system` | Primitive → semantic → component tokens for type, color, spacing, and recurring page grammar | Shared visual systems across pages |
+| `ui-ux-pro-max` | Font pairing, contrast, chart choice, density, and accessibility decisions | Readability, charts, tables, and information-dense decks |
+| `design-taste-frontend` / `taste-skill` | Anti-template review, composition variety, hierarchy, and anti-slop visual preflight | New high-aesthetic decks and visual QA |
+| `design` | Broader art direction, custom icons, image-led composition, and presentation visual language | When the deck needs custom visual direction or icons |
+| `slides` | Strategic narrative, contextual slide strategy, design tokens, and chart-led references | Narrative planning and strategy-heavy decks |
+| `imagegen` | Original bitmap hero visuals, textures, and conceptual metaphors | Only for original non-factual imagery; never official marks or data charts |
+| `stop-slop` | Humanizes mechanical Chinese copy while preserving facts and claims | When visible Chinese copy needs polishing |
+| `beautiful-article` | Source normalization and editorial planning for long or heterogeneous material; owns the HTML branch | Long sources or explicit HTML-derived output |
+| `dom-to-pptx` | Converts fixed `.slide` HTML/CSS frames into the HTML-derived PPTX | Explicit HTML-derived branch only |
+
+### Route map
+
+```text
+source material
+    ↓
+ppt-from-zero: contract → fact ledger → page blueprint → shared design authority
+    ├── native route: ppt-master → editable PPTX → presentations QA
+    └── dual route: beautiful-article → fixed HTML slides → dom-to-pptx → PPTX A
+                    ppt-master → native PPTX B
+                    presentations compares both final renders
+```
+
+The advisory Skills shape the shared decisions above. They are not silently skipped in favor of a generic template, and they do not rewrite one another's source-of-truth files.
 
 ## See it in action
 
